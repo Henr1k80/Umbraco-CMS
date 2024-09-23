@@ -358,10 +358,7 @@ public class LocalizedTextService : ILocalizedTextService
                     (string)key.Attribute("alias")!;
 
                 // there could be duplicates if the language file isn't formatted nicely - which is probably the case for quite a few lang files
-                if (result.ContainsKey(dictionaryKey) == false)
-                {
-                    result.Add(dictionaryKey, key.Value);
-                }
+                result.TryAdd(dictionaryKey, key.Value);
             }
 
             overallResult.Add(area.Attribute("alias")!.Value, result);
@@ -388,16 +385,10 @@ public class LocalizedTextService : ILocalizedTextService
                         (string)key.Attribute("alias")!;
 
                     // there could be duplicates if the language file isn't formatted nicely - which is probably the case for quite a few lang files
-                    if (result.ContainsKey(dictionaryKey) == false)
-                    {
-                        result.Add(dictionaryKey, key.Value);
-                    }
+                    result.TryAdd(dictionaryKey, key.Value);
                 }
 
-                if (!overallResult.ContainsKey(area.Attribute("alias")!.Value))
-                {
-                    overallResult.Add(area.Attribute("alias")!.Value, result);
-                }
+                overallResult.TryAdd(area.Attribute("alias")!.Value, result);
             }
         }
 
@@ -416,10 +407,7 @@ public class LocalizedTextService : ILocalizedTextService
                 (string)key.Attribute("alias")!;
 
             // there could be duplicates if the language file isn't formatted nicely - which is probably the case for quite a few lang files
-            if (result.ContainsKey(dictionaryKey) == false)
-            {
-                result.Add(dictionaryKey, key.Value);
-            }
+            result.TryAdd(dictionaryKey, key.Value);
         }
 
         // Merge English Dictionary
@@ -434,10 +422,7 @@ public class LocalizedTextService : ILocalizedTextService
                     (string)key.Attribute("alias")!;
 
                 // there could be duplicates if the language file isn't formatted nicely - which is probably the case for quite a few lang files
-                if (result.ContainsKey(dictionaryKey) == false)
-                {
-                    result.Add(dictionaryKey, key.Value);
-                }
+                result.TryAdd(dictionaryKey, key.Value);
             }
         }
 
